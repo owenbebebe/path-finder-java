@@ -145,61 +145,18 @@ FinderFactory.runOneBinaryTreeFinder();
 
 ********
 
+********
+
 **Method 1: DFS traversal** 
 
 Assumption input: Given a start PathNode and end PathNode
 
 Assumption output: Output a path from start PathNode to end PathNode. 
 
-1\. From start PathNode run DFS recursively to find M
+<!--StartFragment-->
 
-\- create a visited set to store nodes
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXd2F1xZog-Bb68afZE5cVF82IxtfiNhr5EeXsYylTylrEClxUdfATJEFCJwdyJZLn_s9yWCerq0fIpKdIs4DdvLxXdaqzBm3-T2UnU3T1SfhJOhwRWMAH0pH0mFEiMM4UmQEQZqtTg-5TVMe8Nxd9qWp33E?key=R9jxwiICbeMSIxUm7sWvZQ)
 
-\- create a path arraylist 
-
-func DFS(current Node)
-
-Base case
-
-**a.** current PathNode == null
-
-return false
-
-**b.** current PathNode is in visited set
-
-return false
-
-**c.** current PathNode == end PathNode 
-
-Return true
-
-**Else**
-
-********add current PathNode to visited set
-
-add current PathNode to path
-
-********traverse order: 
-
-// explore left child
-
-If DFS(left node, push left node to Stack) == true: return true
-
-// explore right child 
-
-if DFS(right PathNode, push left PathNode  to Stack) == true; return true
-
-// explore parent node
-
-If DFS(parent PathNode, push parent PathNode to Stack) == true
-
-return true
-
-// if we found every possible current paths
-
-pop last element from stack
-
-return false
 
 **Method 2: BFS Traversal**
 
@@ -207,39 +164,8 @@ Assumption input: Given a start PathNode and end PathNode
 
 Assumption output: Output a path from start PathNode to end PathNode. 
 
-1. Create a BFSPathNode that has extra path properties to store “Up”, “Right”, and “Left”.
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdBqqyUyEhnG9BSG0TrgJz0-XpiJP4Uof2SDeil5ohJSfFSYt5VlP74zxEXKlJhqO3C0x7UzP6YfShksGgP_9-BvtwZVrwda0lL4PIo4UivDFc26MlmAfa4wvHwO442tMry8_MzwPXUglBkT72KlwbkjCQ?key=R9jxwiICbeMSIxUm7sWvZQ)
 
-\
-\
-
-
-2.  From starting BFSPathNode Run BFS to target Node with a queue
-
-\- create a visited set to store node
-
-every current BFSPathNode we pop from queue
-
-If (current BFSPathNode == target node) 
-
-we find a match
-
-else
-
-add current BFSPathNode to visited set
-
-check current BFSPathNode neighboring nodes
-
-if neighbor BFSPathNode is not in visited set
-
-Create a new BFSPathNode and neighbor PathNode Properties 
-
-add neighbor BFSPathNodes to queue with a path operation 
-
-(ex. current BFSPathNode add its left node to queue
-
-       : left BFSPathNode.path add 'Left')
-
-3\. Return found BFSPathNode.path property
 
 **Method 3: Match Node to Root Path** 
 
@@ -247,25 +173,8 @@ Assumption input: Given a start PathNode and end PathNode
 
 Assumption output: Output path from starting PathNode to ending PathNode
 
-1\. Save a traversing path in an ArrayList from starting PathNode to root PathNode. 
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcr5YpzmOp7c3iLFhsMOvYElnHyDP0ho67OKBuTtT2aIQ-5RV7_zpHv5b-q1Cvl-aHY4SV9qs__heOFfNeu-MvWyzfetqpf5oYu-aEGVBom9i3ui9-5EQpz_wqrop7Wdlo2hqutQzvBJmBoGHfvzdD4757o?key=R9jxwiICbeMSIxUm7sWvZQ)
 
-2\. Save a traversing path in an ArrayList from ending PathNode to root PathNode. 
-
-3\. From tail of both starting and targeting node ArrayLists find last matched node
-
-while (PathNode in tail pointer in ending PathNode ArrayList == 
-
-          PathNode in tail pointer in starting PathNode ArrayList )
-
-both tail pointer move to previous one
-
-4\. Get path from two arrayLists
-
-For every elements from head to matched not in starting ArrayList from add a “Up” String into our result arrayList
-
-For every elements from matched node to head in target ArrayList add each its path operation into our result list
-
-5\. Return a result arraylist
 
 **Method 4: One Binary Tree**
 
@@ -275,31 +184,11 @@ Assumption output: Output a path operator from starting PathNode to ending PathN
 
 ex. Up, Left, Left
 
-1.  Find common parent of both nodes
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcGwmpkJGxKBLYoNl7_qhL8xldA2I3Gy1CJGi6kgo-GWUSk7Iw1SdIKRsKaW_KmUXphP_p6YEGXKeoLnn_cP2EDwS77IpGZggujP9iIZ08QMDinpS_3AMFXrvEtxkaa2jE8Hgbss--JsykigS3P1KV9aUw?key=R9jxwiICbeMSIxUm7sWvZQ)
 
-Start with an starting path arrayList and ending path arrayList
 
-while (starting index != ending index)
 
-if (starting index > ending index)
-
-Starting index = starting index / 2
-
-Add an ‘UP’ string to starting path arrayList
-
-else (ending index > starting index)
-
-Check if ending index is even number
-
-Add an ‘Left’ string to ending path arrayList
-
-else  
-
- Add an ‘Right’ string to ending path arrayList
-
-target index = target index / 2 
-
-2\. The elements from starting path arrayList + The elements from ending path arrayList from back to end, is output path result.
+<!--EndFragment-->
 
 \
 
